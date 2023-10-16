@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Registration Page</title>
+  </head>
+  <style>
+    .section {
+      max-width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-container {
+      max-width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin: 15rem auto;
+    }
+
+    .login-container h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .login-form label,
+    .login-form input {
+      display: block;
+      width: 93%;
+      margin-bottom: 10px;
+    }
+    .login-form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .login-form input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-form button {
+      background-color: #04364a;
+      color: #fff;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .create-account {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .create-account p {
+      margin: 0;
+    }
+
+    .create-account a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <nav>
+      <div class="nav_container nav">
+        <div class="logo">
+          <a href="./index.html"><h3>LiquorHub</h3></a>
+        </div>
+        <ul class="nav_menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="./login.html">Sign In</a></li>
+        </ul>
+        <a class="button" href="./cart.html">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+              /></svg
+          ></span>
+          <span>View Cart</span>
+          <span class="badge">0</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="container">
+      <div class="login-container">
+        <h1>Sign Up</h1>
+        <form class="login-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" required />
+
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="create-account">
+          <p>Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+      </div>
+    </section>
+    <script>
+      const registrationForm = document.getElementById("registrationForm");
+
+      registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const genderInputs = document.querySelectorAll('input[name="gender"]');
+        let selectedGender = "";
+
+        for (const input of genderInputs) {
+          if (input.checked) {
+            selectedGender = input.value;
+            break; // Exit the loop once a checked input is found
+          }
+        }
+        const formData = {
+          username: document.querySelector('input[name="username"]').value,
+          fullName: document.querySelector('input[name="fullName"]').value,
+          email: document.querySelector('input[name="email"]').value,
+          phoneNumber: document.querySelector('input[name="phoneNumber"]')
+            .value,
+          address: document.querySelector('input[name="address"]').value,
+          dob: document.querySelector('input[name="dob"]').value,
+          gender: selectedGender,
+        };
+
+        localStorage.setItem("userData", JSON.stringify(formData));
+        window.location.href = "./Profile.html"; // Corrected URL
+      });
+    </script>
+  </body>
+</html>
